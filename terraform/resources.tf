@@ -11,7 +11,7 @@ resource "aws_ecr_repository" "db" {
 
 # S3 bucket to store images
 resource "aws_s3_bucket" "assets" {
-  bucket = "czcs-website-assets"
+  bucket = "group8-website-assets"
 }
 
 # # IAM policy to be used by EKS role for IRSA
