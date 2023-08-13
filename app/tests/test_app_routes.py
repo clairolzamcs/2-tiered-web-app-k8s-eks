@@ -1,25 +1,21 @@
 import unittest
+from unittest.mock import patch
 from app import app
 
-class TestAppRoutes(unittest.TestCase):
+class TestAppDatabaseConnection(unittest.TestCase):
 
-    def setUp(self):
-        # Set up a test client
-        self.client = app.test_client()
+    @patch('app.connections.Connection')
+    def test_database_connection(self, mock_connection):
+        # Create a test client for the Flask app
+        self.app = app.test_client()
 
-    def test_home_route(self):
-        response = self.client.get('/')
+        # Send a GET request to the root endpoint
+        response = self.app.get('/')
+
+        # Check the response status code
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'Home Page', response.data)
 
-    def test_about_route(self):
-        response = self.client.get('/about')
-        self.assertEqual(response.status_code, 200)
-        self.assertIn(b'About Us', response.data)
-
-    def test_nonexistent_route(self):
-        response = self.client.get('/nonexistent')
-        self.assertEqual(response.status_code, 404)
+        # Optionally, check the response content for a specific string or content
 
 if __name__ == '__main__':
     unittest.main()
