@@ -9,6 +9,6 @@ RUN set -xe \
     && apt-get install -y iputils-ping
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-EXPOSE 8080
+EXPOSE 81
 ENTRYPOINT [ "python3" ]
 CMD [ "app.py" ]
