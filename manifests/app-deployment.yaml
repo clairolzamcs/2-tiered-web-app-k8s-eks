@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+  namespace: final
+  labels:
+    app: employee
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: employee
+  template:
+    metadata:
+      labels:
+        app: employee
+    spec:
+      # serviceAccountName: clo835
+      containers:
+      - name: app-deployment
+        image: 009147451403.dkr.ecr.us-east-1.amazonaws.com/prod-app:test-11
+        env:
+        - name: DBHOST
+          value: "db-service.final.svc.cluster.local"
+        - name: DBPORT
+          value: "3306"
+        - name: DATABASE
+          value: "employees"
+        - name: DBPWD
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: password
+        - name: DBUSER
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: user
+        - name: BGIMG_URL
+          valueFrom:
+            configMapKeyRef:
+              name: app-cm
+              key: s3_uri
+        - name: OWN_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: app-cm
+              key: name
+        ports:
+        - containerPort: 81
+        volumeMounts:
+        - name: app-volume
+          mountPath: /app/static/tmp
+      initContainers:
+        - name: download-image
+          image: amazon/aws-cli:latest
+          command: ["sh", "-c", "aws s3 cp $BGIMG /tmp/background.jpg"]
+          env:
+            - name: BGIMG
+              valueFrom:
+                configMapKeyRef:
+                  name: app-cm
+                  key: s3_uri
+          volumeMounts:
+            - name: app-volume
+              mountPath: /tmp
+      volumes:
+        - name: app-volume
+          emptyDir: {}
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always

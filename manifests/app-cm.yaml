@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-cm
+  namespace: final
+data:
+  s3_uri: "s3://group8-website-assets/bg1.jpg"
+  name: "GROUP 8 (Clay, Roi, Nila)"
