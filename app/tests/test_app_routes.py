@@ -8,7 +8,7 @@ class TestAppRoutes(unittest.TestCase):
     #     # Set up a test client
     #     self.client = app.test_client()
     
-     @patch('app.connections.Connection')
+    @patch('app.connections.Connection')
     def test_add_employee(self, mock_connection):
         # Simulate a successful connection
         mock_cursor = mock_connection.return_value.cursor.return_value
