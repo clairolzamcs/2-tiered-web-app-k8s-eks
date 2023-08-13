@@ -4,11 +4,7 @@ from app import app
 
 class TestAppRoutes(unittest.TestCase):
 
-    # def setUp(self):
-    #     # Set up a test client
-    #     self.client = app.test_client()
-    
-    @patch('app.connections.Connection', autospec=True)
+    @patch('app.pymysql.connections.Connection', autospec=True)
     def test_add_employee(self, mock_connection_class):
         # Create a mock connection instance
         mock_connection = MagicMock()
@@ -37,6 +33,10 @@ class TestAppRoutes(unittest.TestCase):
         self.assertIn(b'John Doe', response.data)
         self.assertIn(b'Employee Added Successfully', response.data)
         
+    # def setUp(self):
+    #     # Set up a test client
+    #     self.client = app.test_client()
+    
     # def test_home_route(self):
     #     response = self.client.get('/')
     #     self.assertEqual(response.status_code, 200)
