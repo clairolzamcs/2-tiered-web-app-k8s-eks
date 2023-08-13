@@ -4,15 +4,18 @@ from app import app
 
 class TestAppRoutes(unittest.TestCase):
 
-    def setUp(self):
-        # Set up a test client
-        self.client = app.test_client()
+    # def setUp(self):
+    #     # Set up a test client
+    #     self.client = app.test_client()
     
-    @patch('app.connections.Connection')
+     @patch('app.connections.Connection')
     def test_add_employee(self, mock_connection):
-        # Mock the database connection
+        # Simulate a successful connection
         mock_cursor = mock_connection.return_value.cursor.return_value
         mock_cursor.execute.return_value = None
+
+        # Create a test client for the Flask app
+        self.app = app.test_client()
 
         # Send a POST request to the AddEmp endpoint
         response = self.app.post('/addemp', data={
