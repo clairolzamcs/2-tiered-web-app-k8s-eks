@@ -2,13 +2,16 @@
 <html>
 <head>
 	<title>Get Employee Information</title>
+	<style>
+	  body {
+	    background-image: url('{{ url_for("static", filename=background) }}');
+	  }
+	</style>
 </head>
 <center>
 	<font color="black" size="5" style="font-family: avenir">
-
+		<h1>Hello from {{ ownName }}!</h1>
 		<h1 style="color: DodgerBlue">Employee Information</h1>
-
-		<body style="background: {{ color }};">
 
 			<form action="/fetchdata" autocomplete="on" method="POST">
 
@@ -20,7 +23,6 @@
 		  		<button type="submit" style="background: grey; height: 45px; width: 200px; color: white; size: 5; font:oblique;">FETCH INFO</button><br><br>
 
 			</form>
-
 		</body>
 	</font>
 </center>
