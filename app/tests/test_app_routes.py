@@ -1,5 +1,5 @@
 import unittest
-from app_routes import app
+from app import app
 
 class TestAppRoutes(unittest.TestCase):
 
