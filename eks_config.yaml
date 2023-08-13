@@ -3,7 +3,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: clo835-fproj
+  name: clo835-finalproject-group8
   region: "us-east-1"
   version: "1.26"
 
