@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: db-deployment
-        image: 009147451403.dkr.ecr.us-east-1.amazonaws.com/prod-db:test
+        image: 009147451403.dkr.ecr.us-east-1.amazonaws.com/prod-db:42146ec14528c3995c657e8d4f8de92855e503c0
         env:
           - name: MYSQL_ROOT_PASSWORD
             valueFrom:

@@ -18,7 +18,7 @@ spec:
       # serviceAccountName: clo835
       containers:
       - name: app-deployment
-        image: 009147451403.dkr.ecr.us-east-1.amazonaws.com/prod-app:test-11
+        image: 009147451403.dkr.ecr.us-east-1.amazonaws.com/prod-app:42146ec14528c3995c657e8d4f8de92855e503c0
         env:
         - name: DBHOST
           value: "db-service.final.svc.cluster.local"
