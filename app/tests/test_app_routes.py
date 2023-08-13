@@ -1,5 +1,5 @@
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, MagicMock
 from app import app
 
 class TestAppRoutes(unittest.TestCase):
@@ -8,11 +8,15 @@ class TestAppRoutes(unittest.TestCase):
     #     # Set up a test client
     #     self.client = app.test_client()
     
-    @patch('app.connections.Connection')
-    def test_add_employee(self, mock_connection):
-        # Simulate a successful connection
-        mock_cursor = mock_connection.return_value.cursor.return_value
+    @patch('app.connections.Connection', autospec=True)
+    def test_add_employee(self, mock_connection_class):
+        # Create a mock connection instance
+        mock_connection = MagicMock()
+        mock_cursor = mock_connection.cursor.return_value
         mock_cursor.execute.return_value = None
+
+        # Configure the mock connection class to return the mock connection instance
+        mock_connection_class.return_value = mock_connection
 
         # Create a test client for the Flask app
         self.app = app.test_client()
