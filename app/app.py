@@ -13,10 +13,7 @@ DBUSER = os.environ.get("DBUSER") or "root"
 DBPWD = os.environ.get("DBPWD") or "passwors"
 DATABASE = os.environ.get("DATABASE") or "employees"
 COLOR_FROM_ENV = os.environ.get('APP_COLOR') or "lime"
-if os.environ.get("DBPORT") is None:
-    print("DBPORT environment variable is not set.")
-else:
-    DBPORT = int(os.environ.get("DBPORT"))
+DBPORT = int(os.environ.get("DBPORT", "3306"))
 
 # Background image downloaded through init container
 BGIMG = "tmp/background.jpg"
