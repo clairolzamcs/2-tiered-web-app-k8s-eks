@@ -6,8 +6,8 @@
 <center>
 	<font color="black" size="4" style="font-family: avenir">
 
-		<h1 style="color: DodgerBlue">CZCS Employee Database</h1>
-		<body style="background: {{ color }};" >
+		<h1 style="color: DodgerBlue">{{ ownName }} Employee Database</h1>
+		<body style="background-image: url('{{ url_for("static", filename=background) }}');">
 
 			<form action="/addemp" autocomplete="on" method = "POST" enctype="multipart/form-data">
 
