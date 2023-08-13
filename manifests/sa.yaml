@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: clo835
+  namespace: final
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::009147451403:role/LabRole

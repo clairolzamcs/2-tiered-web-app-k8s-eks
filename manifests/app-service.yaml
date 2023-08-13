@@ -6,9 +6,9 @@ metadata:
 spec:
   selector:
     app: employee
-  type: NodePort
+  type: LoadBalancer
   ports:
     - protocol: TCP
+      name: app-deployment
       port: 81
       targetPort: 81
-      nodePort: 30000
