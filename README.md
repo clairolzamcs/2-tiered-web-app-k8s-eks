@@ -68,12 +68,13 @@ fatal error: An error occurred (InvalidIdentityToken) when calling the AssumeRol
             ii.	Followed steps here: https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html
             Via eksctl: Error: creating OIDC provider: operation error IAM: CreateOpenIDConnectProvider, https response error StatusCode: 403, RequestID: 4a1082c6-649d-4db0-8f5a-956e042f9fec, api error AccessDenied: User: arn:aws:sts::009147451403:assumed-role/voclabs/user1865679=clairolzamsalazar@gmail.com is not authorized to perform: iam:CreateOpenIDConnectProvider on resource: arn:aws:iam::009147451403:oidc-provider/oidc.eks.us-east-1.amazonaws.com because no identity-based policy allows the iam:CreateOpenIDConnectProvider action
             
-            Via AWS console:
+   Via AWS console:
              ![image](https://github.com/clairolzamcs/2-tiered-web-app-k8s-eks/assets/84026627/8736c33c-899e-4192-97d6-e5700809e37c)
 
  
-            iii.	Since I was prohibited to do this, I cannot use a service account. Therefore, I have decided to just expose my S3 publicly so that I won’t need OIDC.
-iv.	It worked flawlessly and the init container was able to download the image from S3 bucket and place it in the target destination.
+
+    iii.	Since I was prohibited to do this, I cannot use a service account. Therefore, I have decided to just expose my S3 publicly so that I won’t need OIDC.
+    iv.	It worked flawlessly and the init container was able to download the image from S3 bucket and place it in the target destination.
 3.	Cannot access
         a.	Solution: add all in security group
 4.	Image is not being loaded in the application. 
