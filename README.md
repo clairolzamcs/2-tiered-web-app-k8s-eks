@@ -70,11 +70,10 @@ fatal error: An error occurred (InvalidIdentityToken) when calling the AssumeRol
             
    Via AWS console:
              ![image](https://github.com/clairolzamcs/2-tiered-web-app-k8s-eks/assets/84026627/8736c33c-899e-4192-97d6-e5700809e37c)
-
  
 
-    iii.	Since I was prohibited to do this, I cannot use a service account. Therefore, I have decided to just expose my S3 publicly so that I won’t need OIDC.
-    iv.	It worked flawlessly and the init container was able to download the image from S3 bucket and place it in the target destination.
+iii.	Since I was prohibited to do this, I cannot use a service account. Therefore, I have decided to just expose my S3 publicly so that I won’t need OIDC.
+iv.	It worked flawlessly and the init container was able to download the image from S3 bucket and place it in the target destination.
 3.	Cannot access
         a.	Solution: add all in security group
 4.	Image is not being loaded in the application. 
